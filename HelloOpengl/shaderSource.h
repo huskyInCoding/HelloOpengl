@@ -3,9 +3,9 @@
 class shaderSource
 {
 private:
-	const char* vertPtr;
-	const char* fragPtr;
-	const char* geomPtr;
+	const char* vertPtr = nullptr;
+	const char* fragPtr = nullptr;
+	const char* geomPtr = nullptr;
 	std::string vertShader;
 	std::string fragShader;
 	std::string geomShader;
@@ -19,6 +19,9 @@ public:
 	const char** getFrag();
 	const char** getGeom();
 
+	bool isVsEmpty();
+	bool isFsEmpty();
+	bool isGsEmpty();
 	void readShaderFromFile(std::string File, SHADERTYPE st);
 };
 

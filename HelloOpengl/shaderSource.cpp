@@ -32,3 +32,13 @@ void shaderSource::readShaderFromFile(std::string shaderFile, SHADERTYPE st) {
 	*strPtr = strdata;
 	in.close();
 }
+
+bool shaderSource::isVsEmpty() {
+	return vertShader.empty();
+}
+bool shaderSource::isFsEmpty() {
+	return fragShader.empty();
+}
+bool shaderSource::isGsEmpty() {
+	return geomShader.empty();
+}
