@@ -22,8 +22,8 @@ int main() {
     GLFWwindow* window = createWindow(800, 600);
 
     shader myShader;
-    myShader.getVertShaderSource("vert.txt");
-    myShader.getFragShaderSource("frag.txt");
+    myShader.getVertShaderSource("D:\\project\\HelloOpengl\\HelloOpengl\\shaders\\vert.txt");
+    myShader.getFragShaderSource("D:\\project\\HelloOpengl\\HelloOpengl\\shaders\\frag.txt");
     myShader.compileShader();
     myShader.linkProgram();
     myShader.useProgram();
