@@ -11,13 +11,10 @@ include_directories(
 )
 
 
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/../build)
+
 set(GLFW_LIBS ${PROJECT_SOURCE_DIR}/lib/glfw3.lib)
 
 target_link_libraries(HelloOpengl ${GLFW_LIBS} )
 
-#target_link_libraries(HelloOpengl opengl32.lib)
-
-
-
-
-
+target_link_libraries(HelloOpengl opengl32.lib)
