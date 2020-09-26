@@ -13,6 +13,9 @@ private:
 	shaderSource shaderCtx;
 	bool getCompileRes(unsigned ID);
 public:
+	inline unsigned getProgramId() {
+		return programID;
+	}
 	bool getVertShaderSource(std::string file);
 	bool getFragShaderSource(std::string file);
 	bool getGeomShaderSource(std::string file);

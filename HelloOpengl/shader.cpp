@@ -21,6 +21,7 @@ bool shader::compileShader() {
         glShaderSource(vertID, 1, shaderCtx.getVert(), NULL);
         glCompileShader(vertID);
         if (!getCompileRes(vertID)) {
+            std::cout << "ERROR::VERT SHADER::COMPILATION_FAILED\n" << std::endl;
             return false;
         }
     }
@@ -30,6 +31,7 @@ bool shader::compileShader() {
         glShaderSource(fragID, 1, shaderCtx.getFrag(), NULL);
         glCompileShader(fragID);
         if (!getCompileRes(fragID)) {
+            std::cout << "ERROR::FFRAG SHADER::COMPILATION_FAILED\n" << std::endl;
             return false;
         }
     }
@@ -39,6 +41,7 @@ bool shader::compileShader() {
         glShaderSource(geomID, 1, shaderCtx.getGeom(), NULL);
         glCompileShader(geomID);
         if (!getCompileRes(geomID)) {
+            std::cout << "ERROR::GEOM SHADER::COMPILATION_FAILED\n" << std::endl;
             return false;
         }
     }
@@ -52,7 +55,7 @@ bool shader::getCompileRes(unsigned ID) {
     {
         char info[512];
         glGetShaderInfoLog(ID, 512, NULL, info);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << info << std::endl;
+        std::cout << info << std::endl;
     };
     return status;
 }
@@ -77,12 +80,12 @@ bool shader::linkProgram() {
         glGetProgramInfoLog(programID, 512, NULL, info);
         std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << info << std::endl;
     }
-    glDeleteShader(vertID);
-    glDeleteShader(fragID);
-    glDeleteShader(geomID);
     return true;
 }
 
 void shader::useProgram() {
     glUseProgram(programID);
+    glDeleteShader(vertID);
+    glDeleteShader(fragID);
+    glDeleteShader(geomID);
 }
