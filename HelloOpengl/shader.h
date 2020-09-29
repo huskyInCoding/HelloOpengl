@@ -19,6 +19,12 @@ public:
 	bool getVertShaderSource(std::string file);
 	bool getFragShaderSource(std::string file);
 	bool getGeomShaderSource(std::string file);
+	
+
+	void setBool(const std::string& name, bool value) const;
+	void setInt(const std::string& name, int value) const;
+	void setFloat(const std::string& name, float value) const;
+
 	bool compileShader();
 	bool linkProgram();
 	void useProgram();

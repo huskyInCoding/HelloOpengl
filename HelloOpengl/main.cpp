@@ -78,8 +78,9 @@ int main() {
 
     
     myShader.useProgram();
-    glUniform1i(glGetUniformLocation(myShader.getProgramId(), "texture0"), 0);
-    glUniform1i(glGetUniformLocation(myShader.getProgramId(), "texture1"), 1);
+    myShader.setInt("texture0", 0);
+    myShader.setInt("texture1", 1);
+ 
     while (shouldKeepWindow(window)) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);

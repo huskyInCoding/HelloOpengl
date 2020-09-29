@@ -13,7 +13,18 @@ bool shader::getGeomShaderSource(std::string file) {
     return true;
 }
 
-
+void shader::setBool(const std::string& name, bool value) const
+{
+    glUniform1i(glGetUniformLocation(programID, name.c_str()), (int)value);
+}
+void shader::setInt(const std::string& name, int value) const
+{
+    glUniform1i(glGetUniformLocation(programID, name.c_str()), value);
+}
+void shader::setFloat(const std::string& name, float value) const
+{
+    glUniform1f(glGetUniformLocation(programID, name.c_str()), value);
+}
 
 bool shader::compileShader() {
     if (!shaderCtx.isVsEmpty()) {
