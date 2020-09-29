@@ -9,6 +9,9 @@
 #include <direct.h>
 #include "stb_image.h"
 #include "texture.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 int main() {
     float vertices[] = {
         //     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
@@ -81,10 +84,21 @@ int main() {
     myShader.setInt("texture0", 0);
     myShader.setInt("texture1", 1);
  
+    
+
+
+    
+    
+
     while (shouldKeepWindow(window)) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-
+        glm::mat4 trans;
+        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+        trans = glm::rotate(trans, 2*(float)glfwGetTime(), glm::vec3(0.0, 0.0, 1.0));
+        trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
+        unsigned int transformLoc = glGetUniformLocation(myShader.getProgramId(), "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         run(window);
