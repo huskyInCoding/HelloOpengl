@@ -70,7 +70,19 @@ bool shader::getCompileRes(unsigned ID) {
     };
     return status;
 }
-
+bool shader::attchShader() {
+    programID = glCreateProgram();
+    if (vertID != 0) {
+        glAttachShader(programID, vertID);
+    }
+    if (fragID != 0) {
+        glAttachShader(programID, fragID);
+    }
+    if (geomID != 0) {
+        glAttachShader(programID, geomID);
+    }
+    return true;
+}
 bool shader::linkProgram() {
     programID = glCreateProgram();
     if (vertID != 0) {

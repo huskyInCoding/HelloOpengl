@@ -27,6 +27,7 @@ public:
 
 	bool compileShader();
 	bool linkProgram();
+	bool attchShader();
 	void useProgram();
 
 };
